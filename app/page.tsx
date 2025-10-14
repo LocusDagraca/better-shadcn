@@ -36,7 +36,7 @@ export default function Home() {
     }, time || 1000)
   }
   return (
-    <div className="font-sans flex flex-col gap-4 items-center justify-center min-h-screen w-full bg-neutral-50 py-36">
+    <div className=" flex flex-col gap-4 items-center justify-center min-h-screen w-full bg-neutral-50 py-36">
 
       <div className="flex flex-col items-center justify-center gap-2">
         <Badge variant="secondary">Now available</Badge>
