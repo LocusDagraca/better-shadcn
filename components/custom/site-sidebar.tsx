@@ -76,9 +76,11 @@ export default function SiteSidebar() {
                     <SidebarGroupContent>
                         <SidebarMenu>
                             {item.items.map((item) => (
-                            <SidebarMenuItem key={item.title}>
-                                <SidebarMenuButton asChild isActive={item.isActive}>
-                                <a href={item.url}>{item.title}</a>
+                            <SidebarMenuItem key={item.title} >
+                                <SidebarMenuButton asChild isActive={item.isActive} className="hover:bg-transparent justify-start" >
+                                  <a href={item.url}>
+                                    <span className="px-2 py-1 rounded group-hover/menu-item:bg-sidebar-accent">{item.title}</span>
+                                  </a>
                                 </SidebarMenuButton>
                             </SidebarMenuItem>
                             ))}
