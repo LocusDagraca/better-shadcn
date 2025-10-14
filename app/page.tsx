@@ -1,103 +1,200 @@
-import Image from "next/image";
+"use client"
+
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { BetterButton } from "@/components/ui/better-button";
+import { useState } from "react";
+import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { BetterSheet, BetterSheetClose, BetterSheetContent, BetterSheetDescription, BetterSheetFooter, BetterSheetTitle, BetterSheetTrigger } from "@/components/ui/better-sheet";
+import { Save, Trash2, Settings } from "lucide-react";
+import { SheetDemo } from "@/components/demo/shadcn/sheet-demo";
+import { BetterSheetDemo } from "@/components/demo/better/better-sheet-demo";
+import { DialogDemo } from "@/components/demo/shadcn/dialog-demo";
+import { BetterDialogDemo } from "@/components/demo/better/better-dialog-demo";
+import BetterNav from "@/components/custom/better-nav";
 
 export default function Home() {
+  const [loading, setLoading] = useState(false)
+  const [loading2, setLoading2] = useState(false)
+  const [loading3, setLoading3] = useState(false)
+  const handleClick = (time?: number) => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, time || 1000)
+  }
+  const handleClick2 = (time?: number) => {
+    setLoading2(true)
+    setTimeout(() => {
+      setLoading2(false)
+    }, time || 1000)
+  }
+  const handleClick3 = (time?: number) => {
+    setLoading3(true)
+    setTimeout(() => {
+      setLoading3(false)
+    }, time || 1000)
+  }
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="font-sans flex flex-col gap-4 items-center justify-center min-h-screen w-full bg-neutral-50 py-36">
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <div className="flex flex-col items-center justify-center gap-2">
+        <Badge variant="secondary">Now available</Badge>
+
+        <h1 className="text-4xl font-bold">Better-Shadcn</h1>
+
+        <p className="text-lg text-foreground/80 text-center flex">
+        Small tweaks of Shadcn UI components, for real-world <span className="bg-neutral-900 text-lime-300 px-1.5 rounded-md font-medium rotate-6 mx-1">UX</span> & <span className="bg-neutral-900 text-rose-300 px-1.5 rounded-md font-medium -rotate-3 mx-1">DX</span> needs.
+        </p>
+
+        <div className="flex items-center justify-center gap-2 my-4">
+          <BetterButton className="px-8" variant="betterDefault">
+            Browse components
+          </BetterButton>
+          <BetterButton className="px-8" variant="betterOutline">
+            <PulseSignal />
+            Is it for me?
+          </BetterButton>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      <div>
+        <pre className="text-sm max-w-3xl bg-neutral-800 text-white p-4 rounded-md">
+          {`UX tips:
+            - The main goal of UX is user clarity
+            - Use big px values for main buttons
+            - Use icon buttons with tooltips
+            - Use animations equal or less than 300ms
+            - longer loading states can increase perceived value / weight of a async action
+            - Use query params so Sheets & Dialogs persist on reload
+            - Prefer sheets over dialogs in general
+            - Prefer dialogs for BIG things (confirmations & alerts/errors)`}
+        </pre>
+      </div>
+
+      <div className="w-full max-w-4xl mt-8">
+        <table className="w-full   rounded-2xl ">
+          <thead>
+            <tr className="bg-muted">
+              <th className="border  px-6 py-3 text-center font-medium">Example</th>
+              <th className="border  px-6 py-3 text-center font-medium">Better Button</th>
+              <th className="border  px-6 py-3 text-center font-medium">Normal Button</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="border  px-6 py-4 text-center font-medium max-w-44">Default: Click feedback, more width</td>
+              <td className="border  px-6 py-4 text-center space-x-2">
+                <BetterButton variant="betterDefault" size="better">Click me</BetterButton>
+                <BetterButton variant="betterOutline" size="better">Click me</BetterButton>
+              </td>
+              <td className="border  px-6 py-4 text-center space-x-2">
+                <Button>Click me</Button>
+                <Button variant="outline">Click me</Button>
+              </td>
+            </tr>
+            <tr>
+              <td className="border  px-6 py-4 text-center font-medium">Built-in loading state</td>
+              <td className="border  px-6 py-4 text-center space-x-2">
+                <BetterButton  throttle={1000} onClick={() => {}} loaderText="Thinking..." className="min-w-40">
+                  Click me 
+                </BetterButton>
+                <BetterButton loading={loading2} throttle={1000}  onClick={() => handleClick2(50)} loaderText="Thinking..." className="min-w-40">
+                  Spam me
+                </BetterButton>
+                {/* <BetterButton loading={loading} onClick={handleClick} variant="secondary">Click me</BetterButton> */}
+              </td>
+              <td className="border  px-6 py-4 text-center">
+                <Button variant="secondary">Click me</Button>
+              </td>
+            </tr>
+            <tr>
+              <td className="border  px-6 py-4 text-center font-medium">Tooltip integration</td>
+              <td className="border  px-6 py-4 text-center space-x-2">
+                <BetterButton loading={loading} throttle={600} tooltip="Save your changes" size="icon" >
+                  <Save />
+                </BetterButton>
+                <BetterButton loading={loading} tooltip="Delete this item"  variant="destructive" size="icon">
+                  <Trash2 />
+                </BetterButton>
+                <BetterButton tooltip="Edit settings" className="rounded-full" variant="ghost" size="icon">
+                  <Settings />
+                </BetterButton>
+              </td>
+              <td className="border  px-6 py-4 text-center">
+                <Button variant="outline">No tooltip</Button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+      <div className="w-full max-w-3xl mt-8">
+        <table className="w-full   rounded-2xl ">
+          <thead>
+            <tr className="bg-muted">
+              <th className="border  px-6 py-3 text-center font-medium">Example</th>
+              <th className="border  px-6 py-3 text-center font-medium">Better Sheet</th>
+              <th className="border  px-6 py-3 text-center font-medium">Normal Sheet</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="border  px-6 py-4 text-center font-medium max-w-44">
+                Open/Close animations, build-in query states, better UI (wider sheet + footer emphasis + bigger title etc)
+              </td>
+              <td className="border  px-6 py-4 text-center ">
+                <BetterSheetDemo />
+              </td>
+              <td className="border  px-6 py-4 text-center">
+                <SheetDemo />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      <div className="w-full max-w-3xl mt-8">
+        <table className="w-full   rounded-2xl ">
+          <thead>
+            <tr className="bg-muted">
+              <th className="border  px-6 py-3 text-center font-medium">Example</th>
+              <th className="border  px-6 py-3 text-center font-medium">Better Dialog</th>
+              <th className="border  px-6 py-3 text-center font-medium">Normal Dialog</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="border  px-6 py-4 text-center font-medium max-w-44">
+                Open/Close animations, build-in query states, better UI (wider sheet + footer emphasis + bigger title etc)
+              </td>
+              <td className="border  px-6 py-4 text-center ">
+                <BetterDialogDemo />
+              </td>
+              <td className="border  px-6 py-4 text-center">
+                <DialogDemo />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <BetterNav base="app" page="docs" />
+
     </div>
   );
 }
+
+
+export function PulseSignal(){
+  return (
+      <div className="relative">
+        <div className="w-2 h-2 bg-green-400 rounded-full relative animate-ping" />
+        <div className="w-2 h-2 bg-green-500 rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+      </div>
+  )
+}
+
