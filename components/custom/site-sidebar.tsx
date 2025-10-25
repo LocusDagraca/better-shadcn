@@ -1,3 +1,4 @@
+import { Separator } from "../ui/separator";
 import { Sidebar, SidebarContent, SidebarGroupLabel, SidebarGroup, SidebarHeader, SidebarTrigger, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarGroupContent,  } from "../ui/sidebar";
 
 export default function SiteSidebar() {
@@ -35,7 +36,6 @@ export default function SiteSidebar() {
               {
                 title: "Sheet",
                 url: "#",
-                isActive: true,
               },
               {
                 title: "Dialog",
@@ -68,16 +68,17 @@ export default function SiteSidebar() {
 
     return (
         <Sidebar collapsible="offcanvas" className="bg-sidebar top-16 h-[calc(100svh-4rem)]">
-            <SidebarContent className="p-3">
+            <SidebarContent className="p-3 pt-6">
             {/* We create a SidebarGroup for each parent. */}
-            {data.navMain.map((item) => (
+            {data.navMain.map((item, index) => (
                 <SidebarGroup key={item.title}>
-                    <SidebarGroupLabel className="text-xs px-1">{item.title}</SidebarGroupLabel>
+                    {index !== 0 && <Separator className="mb-2 opacity-70" />}
+                    <SidebarGroupLabel className="text-xs px-1 uppercase opacity-50 font-normal">{item.title}</SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
                             {item.items.map((item) => (
                             <SidebarMenuItem key={item.title} >
-                                <SidebarMenuButton asChild isActive={item.isActive} className="hover:bg-transparent justify-start" >
+                                <SidebarMenuButton asChild isActive={false} className="hover:bg-transparent justify-start" >
                                   <a href={item.url}>
                                     <span className="px-2 py-1 rounded group-hover/menu-item:bg-sidebar-accent">{item.title}</span>
                                   </a>

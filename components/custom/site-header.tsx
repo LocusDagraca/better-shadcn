@@ -4,6 +4,7 @@ import SiteLogo from "./site-logo"
 import { BetterButton } from "../ui/better-button"
 import { ModeToggle } from "./toggle-mode"
 import { Separator } from "../ui/separator"
+import { GithubIcon } from "./github-icon"
 
 export default function SiteHeader ({ className }: { className?: string }) {
     return <>
@@ -33,12 +34,17 @@ export default function SiteHeader ({ className }: { className?: string }) {
                 <div className="flex items-center gap-4">
                     <ModeToggle />
                     {/* <div className="h-6 w-[1px] bg-foreground/10 mx-1" /> */}
-                    <BetterButton size="better" variant="betterOutline">
+                    {/* <BetterButton size="better" variant="betterOutline">
                         CTA
-                    </BetterButton>
-                    <BetterButton size="better" variant="betterDefault">
-                        Github
-                    </BetterButton>
+                    </BetterButton> */}
+                    <a href="https://github.com/LocusDagraca/better-shadcn.git" target="_blank">
+                        <BetterButton size="better" variant="betterDefault" className="dark:bg-background dark:text-foreground relative">
+                            <GithubIcon />
+                            Github
+                            <div className="absolute top-1.5 right-1.5 size-1.5 rounded-md bg-orange-500 blur-xs" />
+                            <div className="absolute top-1.5 right-1.5 size-1.5 rounded-md bg-orange-500 " />
+                        </BetterButton>
+                    </a>
                 </div>
 
             </div>

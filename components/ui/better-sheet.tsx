@@ -3,7 +3,9 @@
 import * as React from "react"
 import * as SheetPrimitive from "@radix-ui/react-dialog"
 import { XIcon } from "lucide-react"
-import { useQueryState, parseAsBoolean } from "nuqs"
+import { parseAsBoolean } from "nuqs"
+import { useBetterQueryState } from "@/hooks/use-better-query-state"
+
 
 import { cn } from "@/lib/utils"
 import { BetterButton } from "./better-button"
@@ -14,7 +16,7 @@ interface BetterSheetProps extends React.ComponentProps<typeof SheetPrimitive.Ro
 
 function BetterSheet({ queryKey, ...props }: BetterSheetProps) {
   // Only use URL state when queryKey is provided
-  const [isOpen, setIsOpen] = queryKey ? useQueryState(queryKey, parseAsBoolean.withDefault(false)) : [undefined, undefined]
+  const [isOpen, setIsOpen] = queryKey ? useBetterQueryState(queryKey, parseAsBoolean.withDefault(false)) : [undefined, undefined]
 
   // If queryKey is provided, use controlled state from URL
   // Otherwise, use uncontrolled state (default Radix behavior)
